@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: LParking
+  datasource:
+    url: jdbc:postgresql://localhost:5432/LParking
+    username: lukas
+    password: secret123

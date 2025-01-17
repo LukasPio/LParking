@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:17.2
+    container_name: parking_db
+    environment:
+      POSTGRES_USER: lukas
+      POSTGRES_PASSWORD: secret123
+      POSTGRES_DB: LParking
+    volumes:
+      - ./src/main/resources:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
