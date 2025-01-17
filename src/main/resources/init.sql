@@ -1,5 +1,5 @@
--- Create table for Company Registration
-CREATE TABLE IF NOT EXISTS Company (
+-- Create table for Parking Registration
+CREATE TABLE IF NOT EXISTS Parking (
                          id SERIAL PRIMARY KEY,
                          name VARCHAR(255) NOT NULL,
                          cnpj VARCHAR(18) NOT NULL,

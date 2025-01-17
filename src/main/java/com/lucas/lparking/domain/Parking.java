@@ -1,13 +1,11 @@
 package com.lucas.lparking.domain;
 
-import com.lucas.lparking.DTO.CompanyRequestDTO;
+import com.lucas.lparking.DTO.ParkingRequestDTO;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "company")
-public class Company {
+@Table(name = "parking")
+public class Parking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +18,7 @@ public class Company {
     @Column(name = "motorcycle_spots")
     private Integer motorcycleSpots;
 
-    public Company(String name, String cnpj, String address, String phone, Integer carSpots, Integer motorcycleSpots) {
+    public Parking(String name, String cnpj, String address, String phone, Integer carSpots, Integer motorcycleSpots) {
         this.name = name;
         this.cnpj = cnpj;
         this.address = address;
@@ -29,16 +27,16 @@ public class Company {
         this.motorcycleSpots = motorcycleSpots;
     }
 
-    public Company(CompanyRequestDTO companyRequestDTO) {
-        this.name = companyRequestDTO.name();
-        this.cnpj = companyRequestDTO.cnpj();
-        this.address = companyRequestDTO.adress();
-        this.phone = companyRequestDTO.phone();
-        this.carSpots = companyRequestDTO.carSpots();
-        this.motorcycleSpots = companyRequestDTO.motorcycleSpots();
+    public Parking(ParkingRequestDTO parkingRequestDTO) {
+        this.name = parkingRequestDTO.name();
+        this.cnpj = parkingRequestDTO.cnpj();
+        this.address = parkingRequestDTO.adress();
+        this.phone = parkingRequestDTO.phone();
+        this.carSpots = parkingRequestDTO.carSpots();
+        this.motorcycleSpots = parkingRequestDTO.motorcycleSpots();
     }
 
-    public Company() {}
+    public Parking() {}
 
     public Long getId() {
         return id;
@@ -68,13 +66,13 @@ public class Company {
         return motorcycleSpots;
     }
 
-    public void update(CompanyRequestDTO newCompany) {
-        this.name = newCompany.name();
-        this.cnpj = newCompany.cnpj();
-        this.address = newCompany.adress();
-        this.phone = newCompany.phone();
-        this.carSpots = newCompany.carSpots();
-        this.motorcycleSpots = newCompany.motorcycleSpots();
+    public void update(ParkingRequestDTO newParking) {
+        this.name = newParking.name();
+        this.cnpj = newParking.cnpj();
+        this.address = newParking.adress();
+        this.phone = newParking.phone();
+        this.carSpots = newParking.carSpots();
+        this.motorcycleSpots = newParking.motorcycleSpots();
     }
 }
 

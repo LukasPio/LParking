@@ -1,8 +1,8 @@
 package com.lucas.lparking.repository;
 
-import com.lucas.lparking.domain.Company;
+import com.lucas.lparking.domain.Parking;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CompanyRepository extends JpaRepository<Company, Long> {
+public interface ParkingRepository extends JpaRepository<Parking, Long> {
     boolean existsByCnpj(String cnpj);
 }

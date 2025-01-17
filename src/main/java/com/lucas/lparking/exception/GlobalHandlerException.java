@@ -15,7 +15,7 @@ public class GlobalHandlerException {
     public ResponseEntity<String> providedIdDoesntExistsException() {
         return new ResponseEntity<>("Provided id does not exists", HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(value = NoSavedCompaniesException.class)
+    @ExceptionHandler(value = NoSavedParkingsException.class)
     public ResponseEntity<String> noSavedCompaniesException() {
         return new ResponseEntity<>("No saved companies exists", HttpStatus.NO_CONTENT);
     }
