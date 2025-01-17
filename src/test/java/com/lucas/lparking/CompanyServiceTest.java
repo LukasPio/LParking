@@ -72,4 +72,49 @@ public class CompanyServiceTest {
         companyService.save(company1);
         Assertions.assertThrows(CnpjAlreadyExistsException.class, () -> companyService.save(company2));
     }
+
+    @Test
+    @DisplayName("Should get a saved company by id successfully")
+    void getCompanyCase1() {
+        CompanyRequestDTO companyDTO = new CompanyRequestDTO(
+                "Tech Solutions Ltda.",
+                "12.543.678/0001-96",
+                "Rua das Inovações, 123",
+                "(11) 98765-4321",
+                50,
+                20);
+        Company savedCompany = companyService.save(companyDTO);
+
+        Company requestedCompany = companyService.findById(savedCompany.getId());
+        Assertions.assertEquals(savedCompany.getName(), requestedCompany.getName());
+    }
+
+    @Test
+    @DisplayName("Shouldn't get company when id doesn't exists")
+    void getCompanyCase2() {
+        Assertions.assertThrows(ProvidedIdDoesntExistsException.class, () -> companyService.findById(59L));
+    }
+
+    @Test
+    @DisplayName("Should get all company successfully")
+    void getAllCompanyCase1() {
+        CompanyRequestDTO companyDTO = new CompanyRequestDTO(
+                "Tech Solutions Ltda.",
+                "12.543.678/0001-96",
+                "Rua das Inovações, 123",
+                "(11) 98765-4321",
+                50,
+                20);
+        companyService.save(companyDTO);
+
+        List<Company> companies = companyService.findAll();
+        Assertions.assertFalse(companies.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Shouldn't get all company when there's no saved company")
+    void getAllCompanyCase2() {
+        Assertions.assertThrows(NoSavedCompaniesException.class, () -> companyService.findAll());
+    }
+
 }
